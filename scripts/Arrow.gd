@@ -10,15 +10,17 @@ func _ready():
 func _physics_process(delta):
 
 	var angle = linear_velocity.angle()
+
+	if $Sprite2D:
+		$Sprite2D.rotation = angle
 	
-	#print(angle)
-	
-	$Sprite2D.rotation = angle
-	
-	
-	#If contact with player freeze the arrow and reparent to the player body
-	# Disable arrow collision here as well
-	
-	
-	
-	
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("Player"):
+		print("HIT")
+		$Sprite2D.reparent(body)
+		$Area2D.monitoring = false
+		
+	elif body.is_in_group("Level"):
+		print("MISS")
+		queue_free()

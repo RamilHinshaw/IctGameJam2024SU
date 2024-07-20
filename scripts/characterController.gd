@@ -27,7 +27,7 @@ func _physics_process(delta):
 	_isAirborne = !$Body.position.y >= 240
 	#print("AIRBORNE: " + str(_isAirborne))
 	
-	print($Body.position.y)
+	#print($Body.position.y)
 		
 		
 	if Input.is_action_just_pressed("Left") || Input.is_action_just_pressed("Right"):
