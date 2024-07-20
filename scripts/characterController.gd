@@ -39,7 +39,13 @@ func _physics_process(delta):
 			print("Fast Input detected!")
 			
 			if (_lastInputAxis == axis):
-				$Body.apply_central_force(Vector2.RIGHT * axis * bonusForce + Vector2.UP * bonusForce/8)
+				
+				var calcUpwardForce = Vector2.UP * bonusForce/8
+				
+				if (!_isAirborne):
+					calcUpwardForce = Vector2.UP * bonusForce/3
+				
+				$Body.apply_central_force(Vector2.RIGHT * axis * bonusForce + calcUpwardForce)
 				print("DASH")
 			
 		if ((_lastInputAxis != axis && lastInputDelay <= lastJumpInputTimerMin) ||
@@ -58,7 +64,8 @@ func _physics_process(delta):
 		
 		
 	#If on ground
-	$Body.apply_impulse(Vector2.RIGHT * axis * power,Vector2.ZERO)
+	$Body.apply_central_impulse(Vector2.RIGHT * axis * power)
+	$Head.apply_central_impulse(Vector2.UP * power/5)
 	
 	if Input.is_action_pressed("Left"):
 		#$"ArmOuter-Left".apply_impulse(Vector2.UP * upwardPower + Vector2.RIGHT * axis * upwardPower/6, Vector2.ZERO)

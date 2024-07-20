@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://7w3p000ukqxg"]
+[gd_scene load_steps=11 format=3 uid="uid://7w3p000ukqxg"]
 
 [ext_resource type="Script" path="res://scripts/characterController.gd" id="1_gcdet"]
+[ext_resource type="Script" path="res://scripts/Arrow.gd" id="2_aupj8"]
 [ext_resource type="Texture2D" uid="uid://dhhadc8pd2h1b" path="res://textures/projectile/ARROW.png" id="2_sv800"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifn1l"]
@@ -32,9 +33,9 @@ size = Vector2(9.02258, 13.989)
 position = Vector2(425.519, 431.513)
 
 [node name="Ground" type="StaticBody2D" parent="Level"]
-visible = false
 position = Vector2(2, 609)
 scale = Vector2(28.9059, 1)
+collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Ground"]
 position = Vector2(19.2125, 21.8529)
@@ -73,6 +74,8 @@ position = Vector2(977.935, 683.909)
 script = ExtResource("1_gcdet")
 
 [node name="Body" type="RigidBody2D" parent="Ragdoll"]
+can_sleep = false
+continuous_cd = 2
 
 [node name="Sprite" type="ColorRect" parent="Ragdoll/Body"]
 offset_left = -19.0
@@ -86,6 +89,8 @@ shape = SubResource("CapsuleShape2D_hqllj")
 
 [node name="Head" type="RigidBody2D" parent="Ragdoll"]
 position = Vector2(2.04346, -62.438)
+can_sleep = false
+continuous_cd = 2
 
 [node name="Sprite" type="ColorRect" parent="Ragdoll/Head"]
 offset_left = -23.4161
@@ -272,18 +277,25 @@ position = Vector2(-10.7806, 70.9533)
 node_a = NodePath("../../LegInner-Left")
 node_b = NodePath("../../LegOuter-Left")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Ragdoll"]
-position = Vector2(-133.997, -75.8033)
+[node name="Arrow" type="RigidBody2D" parent="."]
+position = Vector2(-491.185, 802.422)
+collision_mask = 16
+can_sleep = false
+contact_monitor = true
+linear_damp = 0.2
+script = ExtResource("2_aupj8")
+startVelocity = Vector2(8, -5)
+force = 10000.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Ragdoll/RigidBody2D"]
-position = Vector2(-209.9, -142.553)
+[node name="Sprite2D" type="Sprite2D" parent="Arrow"]
+position = Vector2(-7.66785, 10.1824)
 scale = Vector2(0.0406364, 0.0406364)
 texture = ExtResource("2_sv800")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/RigidBody2D"]
-position = Vector2(-201.869, -152.411)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow"]
+position = Vector2(0.363525, 0.323669)
 shape = SubResource("RectangleShape2D_k41e4")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ragdoll/RigidBody2D"]
-position = Vector2(-151.226, -152.623)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Arrow"]
+position = Vector2(51.0063, 0.111877)
 shape = SubResource("RectangleShape2D_ptolg")
