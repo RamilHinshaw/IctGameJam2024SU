@@ -112,6 +112,7 @@ shape = SubResource("CircleShape2D_ut6eq")
 [node name="ArmInner-Left" type="RigidBody2D" parent="Ragdoll" groups=["Player"]]
 position = Vector2(-36.9392, -11.6365)
 collision_layer = 2
+can_sleep = false
 
 [node name="Sprite" type="ColorRect" parent="Ragdoll/ArmInner-Left"]
 offset_left = -18.75
@@ -128,6 +129,7 @@ shape = SubResource("CapsuleShape2D_op4bu")
 [node name="ArmOuter-Left" type="RigidBody2D" parent="Ragdoll" groups=["Player"]]
 position = Vector2(-73.9177, -11.6365)
 collision_layer = 2
+can_sleep = false
 
 [node name="Sprite" type="ColorRect" parent="Ragdoll/ArmOuter-Left"]
 offset_left = -18.75
@@ -144,6 +146,7 @@ shape = SubResource("CapsuleShape2D_op4bu")
 [node name="ArmInner-Right" type="RigidBody2D" parent="Ragdoll" groups=["Player"]]
 position = Vector2(39.8636, -11.6147)
 collision_layer = 2
+can_sleep = false
 
 [node name="Sprite" type="ColorRect" parent="Ragdoll/ArmInner-Right"]
 offset_left = -18.75
@@ -160,6 +163,7 @@ shape = SubResource("CapsuleShape2D_op4bu")
 [node name="ArmOuter-Right" type="RigidBody2D" parent="Ragdoll" groups=["Player"]]
 position = Vector2(76.8422, -11.6147)
 collision_layer = 2
+can_sleep = false
 
 [node name="Sprite" type="ColorRect" parent="Ragdoll/ArmOuter-Right"]
 offset_left = -18.75
@@ -177,6 +181,7 @@ shape = SubResource("CapsuleShape2D_op4bu")
 position = Vector2(12.918, 52.8219)
 rotation = 1.5708
 collision_layer = 2
+can_sleep = false
 
 [node name="Sprite" type="ColorRect" parent="Ragdoll/LegInner-Right"]
 offset_left = -18.75
@@ -194,6 +199,7 @@ shape = SubResource("CapsuleShape2D_op4bu")
 position = Vector2(12.8971, 89.8476)
 rotation = 1.5708
 collision_layer = 2
+can_sleep = false
 
 [node name="Sprite" type="ColorRect" parent="Ragdoll/LegOuter-Right"]
 offset_left = -18.75
@@ -211,6 +217,7 @@ shape = SubResource("CapsuleShape2D_op4bu")
 position = Vector2(-10.0249, 52.8219)
 rotation = 1.5708
 collision_layer = 2
+can_sleep = false
 
 [node name="Sprite" type="ColorRect" parent="Ragdoll/LegInner-Left"]
 offset_left = -18.75
@@ -228,6 +235,7 @@ shape = SubResource("CapsuleShape2D_op4bu")
 position = Vector2(-10.0458, 89.8476)
 rotation = 1.5708
 collision_layer = 2
+can_sleep = false
 
 [node name="Sprite" type="ColorRect" parent="Ragdoll/LegOuter-Left"]
 offset_left = -18.75
@@ -317,6 +325,14 @@ color = Color(0.843166, 0, 0.340043, 1)
 [node name="Arrow_Spawner" type="Node2D" parent="."]
 position = Vector2(-473.958, 552.357)
 script = ExtResource("4_lhrtl")
+timer = 0.6
+spawnPosY = Vector2(40, 800)
+
+[node name="Arrow_Spawner2" type="Node2D" parent="."]
+position = Vector2(2441.33, 552.357)
+script = ExtResource("4_lhrtl")
+timer = 0.6
+reverse = true
 spawnPosY = Vector2(40, 800)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

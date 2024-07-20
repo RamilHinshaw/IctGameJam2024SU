@@ -20,11 +20,13 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	
 	if body.is_in_group("Player") && !_hitPlayer:
-		if body.is_in_group("Head"):
-			print("DEATH!")
-			get_tree().reload_current_scene()
+		#if body.is_in_group("Head"):
+			#print("DEATH!")
+			#get_tree().reload_current_scene()
 		
-		print("HIT")
+		#print("HIT: " + body.name)
+		#EventBus.emit_signal("player_hit", body.name)
+		EventBus.player_hit.emit(body.name)
 		$Sprite2D.reparent(body)
 		$Area2D.monitoring = false
 		_hitPlayer = true

@@ -30,6 +30,7 @@ texture = ExtResource("2_jqqsa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-11.9417, 0.323669)
 shape = SubResource("RectangleShape2D_k41e4")
+disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 23

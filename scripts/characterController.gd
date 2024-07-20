@@ -19,12 +19,71 @@ var _isRightHeld: bool
 
 var _isAirborne: bool = false
 
+var _isDead: bool = false
+
+var bodyParts = []
+
+#BRUTE FORCE!
+var headJointHealth: int = 1
+var leftArmJointHealth: int = 3
+var rightArmJointHealth: int = 3
+var leftLegointHealth: int = 3
+var rightLegJointHealth: int = 3
+
+func _ready():
+	var bodyParts = [$Body,$Head,$"ArmInner-Left",$"ArmOuter-Left",$"ArmInner-Right",$"ArmOuter-Right",$"LegInner-Left",$"LegOuter-Left",$"LegInner-Right",$"LegOuter-Right"]
+	EventBus.player_hit.connect(hurtBody.bind()) 
+	
+	#await get_tree().create_timer(3).timeout
+	#$Joints/LeftArm.queue_free()
+			
+func hurtBody(bodyPart):
+	print("HIT: " + bodyPart)
+	
+	if (bodyPart == "Head"):
+		headJointHealth -= 1
+		if headJointHealth <= 0 && $Joints/HeadBody:
+			onDeath()
+	
+	elif (bodyPart == "ArmInner-Left" || "ArmOuter-Left" ):
+		leftArmJointHealth -= 1
+		if leftArmJointHealth <= 0 && $Joints/LeftArmBody:
+			$Joints/LeftArmBody.queue_free()
+		
+	elif (bodyPart == "ArmInner-Right" || "ArmOuter-Right" ):
+		rightArmJointHealth -= 1
+		if rightArmJointHealth <= 0 && $Joints/RightArmBody:
+			$Joints/RightArmBody.queue_free()
+
+	elif (bodyPart == "LegInner-Left" || "LegOuter-Left" ):
+		leftLegointHealth -= 1
+		if leftLegointHealth <= 0 && $Joints/LeftLegBody:
+			$Joints/LeftLegBody.queue_free()
+		
+	elif (bodyPart == "LegInner-Right" || "LegOuter-Right" ):
+		rightLegJointHealth -= 1
+		if rightLegJointHealth <= 0 && $Joints/RightLegBody:
+			$Joints/RightLegBody.queue_free()
+
+
 func _process(delta):
 	if Input.is_key_pressed(KEY_R):
 		get_tree().reload_current_scene()
 
+func onDeath():
+	$Joints/HeadBody.queue_free()
+	print("DEATH!")
+	_isDead = true
+	Engine.time_scale = 0.5
+	await get_tree().create_timer(2).timeout
+	Engine.time_scale = 1.0
+	get_tree().reload_current_scene()
 
 func _physics_process(delta):
+	
+	if (_isDead):
+		return
+	
 	var axis = Input.get_action_strength("Right") - Input.get_action_strength("Left")	
 	var force: Vector2 = Vector2.UP * upwardPower + Vector2.RIGHT * axis * power
 	
@@ -44,22 +103,25 @@ func _physics_process(delta):
 			
 			if (_lastInputAxis == axis):
 				
-				var calcUpwardForce = Vector2.UP * bonusForce/8
+				#var calcUpwardForce = Vector2.UP * bonusForce/8
+				#
+				#if (!_isAirborne):
+					#calcUpwardForce = Vector2.UP * bonusForce/3
+					
+				var calcUpwardForce = Vector2.UP * bonusForce/3
 				
-				if (!_isAirborne):
-					calcUpwardForce = Vector2.UP * bonusForce/3
-				
+				#resetVelocity()
 				$Body.apply_central_force(Vector2.RIGHT * axis * bonusForce*2 + calcUpwardForce)
 				print("DASH")
 			
 		if ((_lastInputAxis != axis && lastInputDelay <= lastJumpInputTimerMin) ||
 		 (axis == 0 && !_isLeftHeld && !_isRightHeld)):
 			
-			if (!_isAirborne):
-				$Body.apply_central_force(Vector2.UP * jumpForce*2)
+			#if (!_isAirborne):
+				$Body.apply_central_force(Vector2.UP * jumpForce)
 				#$"ArmOuter-Right".apply_central_force(Vector2.UP * jumpForce*2)
 				#$"ArmOuter-Left".apply_central_force(Vector2.UP * jumpForce*2)
-				print("JUMP")
+				#print("JUMP")
 		
 		
 		# Reset
@@ -68,8 +130,9 @@ func _physics_process(delta):
 		
 		
 	#If on ground
-	$Body.apply_central_impulse(Vector2.RIGHT * axis * power)
-	$Head.apply_central_impulse(Vector2.UP * power/5)
+	if Input.is_action_pressed("Left") || Input.is_action_pressed("Right"):
+		$Body.apply_central_impulse(Vector2.RIGHT * axis * power)
+		$Head.apply_central_impulse(Vector2.UP * power)
 	
 	if Input.is_action_pressed("Left"):
 		#$"ArmOuter-Left".apply_impulse(Vector2.UP * upwardPower + Vector2.RIGHT * axis * upwardPower/6, Vector2.ZERO)
@@ -88,4 +151,31 @@ func _physics_process(delta):
 	if Input.is_action_just_released("Right"):
 		_isRightHeld = false
 		
+	#clampVelocity()
+	#print($Head.linear_velocity)
 
+func resetVelocity():
+	$Body.linear_velocity = Vector2.ZERO
+	$Head.linear_velocity = Vector2.ZERO
+	$"ArmInner-Left".linear_velocity = Vector2.ZERO
+	$"ArmOuter-Left".linear_velocity = Vector2.ZERO
+	$"ArmInner-Right".linear_velocity = Vector2.ZERO
+	$"ArmOuter-Right".linear_velocity = Vector2.ZERO
+	$"LegInner-Left".linear_velocity = Vector2.ZERO
+	$"LegOuter-Left".linear_velocity = Vector2.ZERO
+	$"LegInner-Right".linear_velocity = Vector2.ZERO
+	$"LegOuter-Right".linear_velocity = Vector2.ZERO
+
+func clampVelocity():
+
+	pass
+	#$Body.linear_velocity = $Body.linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
+	#$Head.linear_velocity = $Head.linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
+	#$"ArmInner-Left".linear_velocity = $"ArmInner-Left".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
+	#$"ArmOuter-Left".linear_velocity = $"ArmOuter-Left".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
+	#$"ArmInner-Right".linear_velocity = $"ArmInner-Right".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
+	#$"ArmOuter-Right".linear_velocity = $"ArmOuter-Right".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
+	#$"LegInner-Left".linear_velocity = $"LegInner-Left".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
+	#$"LegOuter-Left".linear_velocity = $"LegOuter-Left".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
+	#$"LegInner-Right".linear_velocity = $"LegInner-Right".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
+	#$"LegOuter-Right".linear_velocity = $"LegOuter-Right".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
