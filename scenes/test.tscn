@@ -1,0 +1,170 @@
+[gd_scene load_steps=6 format=3 uid="uid://7w3p000ukqxg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80oau"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdvy3"]
+size = Vector2(40, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wiohh"]
+size = Vector2(44.1942, 42.6032)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwfiv"]
+size = Vector2(36.8111, 16.9897)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsusr"]
+size = Vector2(17.1498, 36.9723)
+
+[node name="Level" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 2.0
+offset_top = 609.0
+offset_right = 42.0
+offset_bottom = 649.0
+scale = Vector2(28.9059, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="ColorRect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/Area2D"]
+position = Vector2(19.9308, 20)
+shape = SubResource("RectangleShape2D_80oau")
+
+[node name="Ragdoll" type="Node2D" parent="."]
+
+[node name="Body" type="RigidBody2D" parent="Ragdoll"]
+
+[node name="Sprite" type="ColorRect" parent="Ragdoll/Body"]
+offset_left = -19.0
+offset_top = -32.0
+offset_right = 21.0
+offset_bottom = 38.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/Body"]
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_cdvy3")
+
+[node name="Head" type="RigidBody2D" parent="Ragdoll"]
+position = Vector2(0, -64)
+
+[node name="Sprite" type="ColorRect" parent="Ragdoll/Head"]
+offset_left = -22.1213
+offset_top = -16.0502
+offset_right = 66.8787
+offset_bottom = 68.9498
+scale = Vector2(0.497822, 0.499483)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/Head"]
+position = Vector2(0.263706, 5.29195)
+shape = SubResource("RectangleShape2D_wiohh")
+
+[node name="ArmInner-Left" type="RigidBody2D" parent="Ragdoll"]
+position = Vector2(-41.25, -17)
+
+[node name="Sprite" type="ColorRect" parent="Ragdoll/ArmInner-Left"]
+offset_left = -18.75
+offset_top = -8.0
+offset_right = 18.25
+offset_bottom = 9.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/ArmInner-Left"]
+position = Vector2(-0.463039, 0.572727)
+shape = SubResource("RectangleShape2D_vwfiv")
+
+[node name="ArmOuter-Left" type="RigidBody2D" parent="Ragdoll"]
+position = Vector2(-81.2015, -17)
+
+[node name="Sprite" type="ColorRect" parent="Ragdoll/ArmOuter-Left"]
+offset_left = -18.75
+offset_top = -8.0
+offset_right = 18.25
+offset_bottom = 9.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/ArmOuter-Left"]
+position = Vector2(-0.463039, 0.572727)
+shape = SubResource("RectangleShape2D_vwfiv")
+
+[node name="ArmInner-Right" type="RigidBody2D" parent="Ragdoll"]
+position = Vector2(43.6079, -17)
+
+[node name="Sprite" type="ColorRect" parent="Ragdoll/ArmInner-Right"]
+offset_left = -18.75
+offset_top = -8.0
+offset_right = 18.25
+offset_bottom = 9.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/ArmInner-Right"]
+position = Vector2(-0.463039, 0.572727)
+shape = SubResource("RectangleShape2D_vwfiv")
+
+[node name="ArmOuter-Right" type="RigidBody2D" parent="Ragdoll"]
+position = Vector2(84.4835, -17)
+
+[node name="Sprite" type="ColorRect" parent="Ragdoll/ArmOuter-Right"]
+offset_left = -18.75
+offset_top = -8.0
+offset_right = 18.25
+offset_bottom = 9.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/ArmOuter-Right"]
+position = Vector2(-0.463039, 0.572727)
+shape = SubResource("RectangleShape2D_vwfiv")
+
+[node name="LegInner-Left" type="RigidBody2D" parent="Ragdoll"]
+position = Vector2(-21.1237, 60.6439)
+
+[node name="Sprite" type="ColorRect" parent="Ragdoll/LegInner-Left"]
+offset_left = -8.87628
+offset_top = 19.3561
+offset_right = 28.1237
+offset_bottom = 36.3561
+rotation = -1.5708
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/LegInner-Left"]
+position = Vector2(-0.569536, 0.587845)
+shape = SubResource("RectangleShape2D_dsusr")
+
+[node name="LegOuter-Left" type="RigidBody2D" parent="Ragdoll"]
+position = Vector2(-21.1351, 101.114)
+
+[node name="Sprite" type="ColorRect" parent="Ragdoll/LegOuter-Left"]
+offset_left = -8.87628
+offset_top = 19.3561
+offset_right = 28.1237
+offset_bottom = 36.3561
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/LegOuter-Left"]
+position = Vector2(-0.569536, 0.587845)
+shape = SubResource("RectangleShape2D_dsusr")
+
+[node name="LegInner-Right" type="RigidBody2D" parent="Ragdoll"]
+position = Vector2(20.9445, 60.6439)
+
+[node name="Sprite" type="ColorRect" parent="Ragdoll/LegInner-Right"]
+offset_left = -8.87628
+offset_top = 19.3561
+offset_right = 28.1237
+offset_bottom = 36.3561
+rotation = -1.5708
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/LegInner-Right"]
+position = Vector2(-0.569536, 0.587845)
+shape = SubResource("RectangleShape2D_dsusr")
+
+[node name="LegOuter-Right" type="RigidBody2D" parent="Ragdoll"]
+position = Vector2(20.9331, 101.114)
+
+[node name="Sprite" type="ColorRect" parent="Ragdoll/LegOuter-Right"]
+offset_left = -8.87628
+offset_top = 19.3561
+offset_right = 28.1237
+offset_bottom = 36.3561
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/LegOuter-Right"]
+position = Vector2(-0.569536, 0.587845)
+shape = SubResource("RectangleShape2D_dsusr")
