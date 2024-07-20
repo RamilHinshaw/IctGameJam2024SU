@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://3jfxo2yc1arf"]
+
+[ext_resource type="Script" path="res://scripts/Arrow.gd" id="1_cial4"]
+[ext_resource type="Texture2D" uid="uid://dhhadc8pd2h1b" path="res://textures/projectile/ARROW.png" id="2_jqqsa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k41e4"]
+size = Vector2(120.187, 3.64803)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xlquk"]
+radius = 4.367
+height = 23.2294
+
+[node name="Arrow" type="RigidBody2D"]
+position = Vector2(-471.83, 660.767)
+collision_mask = 16
+can_sleep = false
+max_contacts_reported = 3
+contact_monitor = true
+linear_damp = 0.2
+script = ExtResource("1_cial4")
+startVelocity = Vector2(8, -5)
+force = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-7.66785, 10.1824)
+scale = Vector2(0.0406364, 0.0406364)
+texture = ExtResource("2_jqqsa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11.9417, 0.323669)
+shape = SubResource("RectangleShape2D_k41e4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 23
+priority = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(61.1054, 0.537658)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xlquk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

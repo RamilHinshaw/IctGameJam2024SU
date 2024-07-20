@@ -6,7 +6,7 @@ extends RigidBody2D
 var _hitPlayer: bool = false
 
 func _ready():
-	apply_central_force(startVelocity * force)
+	apply_central_force(startVelocity * force * 10000)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -18,7 +18,12 @@ func _physics_process(delta):
 	
 
 func _on_area_2d_body_entered(body):
+	
 	if body.is_in_group("Player") && !_hitPlayer:
+		if body.is_in_group("Head"):
+			print("DEATH!")
+			get_tree().reload_current_scene()
+		
 		print("HIT")
 		$Sprite2D.reparent(body)
 		$Area2D.monitoring = false
@@ -27,4 +32,5 @@ func _on_area_2d_body_entered(body):
 		
 	elif body.is_in_group("Level"):
 		print("MISS")
+		$Sprite2D.reparent(body)
 		queue_free()

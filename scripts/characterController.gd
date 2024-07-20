@@ -49,16 +49,16 @@ func _physics_process(delta):
 				if (!_isAirborne):
 					calcUpwardForce = Vector2.UP * bonusForce/3
 				
-				$Body.apply_central_force(Vector2.RIGHT * axis * bonusForce + calcUpwardForce)
+				$Body.apply_central_force(Vector2.RIGHT * axis * bonusForce*2 + calcUpwardForce)
 				print("DASH")
 			
 		if ((_lastInputAxis != axis && lastInputDelay <= lastJumpInputTimerMin) ||
 		 (axis == 0 && !_isLeftHeld && !_isRightHeld)):
 			
 			if (!_isAirborne):
-				#$Body.apply_central_force(Vector2.UP * bonusForce*2)
-				$"ArmOuter-Right".apply_central_force(Vector2.UP * jumpForce*2)
-				$"ArmOuter-Left".apply_central_force(Vector2.UP * jumpForce*2)
+				$Body.apply_central_force(Vector2.UP * jumpForce*2)
+				#$"ArmOuter-Right".apply_central_force(Vector2.UP * jumpForce*2)
+				#$"ArmOuter-Left".apply_central_force(Vector2.UP * jumpForce*2)
 				print("JUMP")
 		
 		
