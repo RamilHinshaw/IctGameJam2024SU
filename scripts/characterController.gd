@@ -19,6 +19,10 @@ var _isRightHeld: bool
 
 var _isAirborne: bool = false
 
+func _process(delta):
+	if Input.is_key_pressed(KEY_R):
+		get_tree().reload_current_scene()
+
 
 func _physics_process(delta):
 	var axis = Input.get_action_strength("Right") - Input.get_action_strength("Left")	

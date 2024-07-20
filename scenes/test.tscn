@@ -23,10 +23,11 @@ radius = 8.38937
 height = 37.1227
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k41e4"]
-size = Vector2(144.798, 3.64803)
+size = Vector2(120.187, 3.64803)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xlquk"]
-radius = 6.10999
+radius = 4.367
+height = 23.2294
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqih7"]
 size = Vector2(39.7817, 39.438)
@@ -293,19 +294,194 @@ startVelocity = Vector2(8, -5)
 force = 10000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Arrow2"]
+z_index = -1
 position = Vector2(-7.66785, 10.1824)
 scale = Vector2(0.0406364, 0.0406364)
 texture = ExtResource("2_sv800")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow2"]
-position = Vector2(0.363525, 0.323669)
+position = Vector2(-11.9417, 0.323669)
 shape = SubResource("RectangleShape2D_k41e4")
 
 [node name="Area2D" type="Area2D" parent="Arrow2"]
 priority = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow2/Area2D"]
-position = Vector2(61.0266, 0.222717)
+position = Vector2(61.1054, 0.537658)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xlquk")
+
+[node name="Arrow3" type="RigidBody2D" parent="."]
+position = Vector2(-499.234, 661.557)
+collision_mask = 16
+can_sleep = false
+max_contacts_reported = 3
+contact_monitor = true
+linear_damp = 0.2
+script = ExtResource("2_aupj8")
+startVelocity = Vector2(8, -5)
+force = 10000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow3"]
+z_index = -1
+position = Vector2(-7.66785, 10.1824)
+scale = Vector2(0.0406364, 0.0406364)
+texture = ExtResource("2_sv800")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow3"]
+position = Vector2(-11.9417, 0.323669)
+shape = SubResource("RectangleShape2D_k41e4")
+
+[node name="Area2D" type="Area2D" parent="Arrow3"]
+priority = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow3/Area2D"]
+position = Vector2(61.1054, 0.537658)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xlquk")
+
+[node name="Arrow4" type="RigidBody2D" parent="."]
+position = Vector2(-531.992, 596.041)
+collision_mask = 16
+can_sleep = false
+max_contacts_reported = 3
+contact_monitor = true
+linear_damp = 0.2
+script = ExtResource("2_aupj8")
+startVelocity = Vector2(8, -5)
+force = 10000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow4"]
+z_index = -1
+position = Vector2(-7.66785, 10.1824)
+scale = Vector2(0.0406364, 0.0406364)
+texture = ExtResource("2_sv800")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow4"]
+position = Vector2(-11.9417, 0.323669)
+shape = SubResource("RectangleShape2D_k41e4")
+
+[node name="Area2D" type="Area2D" parent="Arrow4"]
+priority = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow4/Area2D"]
+position = Vector2(61.1054, 0.537658)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xlquk")
+
+[node name="Arrow5" type="RigidBody2D" parent="."]
+position = Vector2(-539.551, 502.807)
+collision_mask = 16
+can_sleep = false
+max_contacts_reported = 3
+contact_monitor = true
+linear_damp = 0.2
+script = ExtResource("2_aupj8")
+startVelocity = Vector2(8, -5)
+force = 10000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow5"]
+z_index = -1
+position = Vector2(-7.66785, 10.1824)
+scale = Vector2(0.0406364, 0.0406364)
+texture = ExtResource("2_sv800")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow5"]
+position = Vector2(-11.9417, 0.323669)
+shape = SubResource("RectangleShape2D_k41e4")
+
+[node name="Area2D" type="Area2D" parent="Arrow5"]
+priority = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow5/Area2D"]
+position = Vector2(61.1054, 0.537658)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xlquk")
+
+[node name="Arrow6" type="RigidBody2D" parent="."]
+position = Vector2(-597.507, 409.573)
+collision_mask = 16
+can_sleep = false
+max_contacts_reported = 3
+contact_monitor = true
+linear_damp = 0.2
+script = ExtResource("2_aupj8")
+startVelocity = Vector2(8, -5)
+force = 10000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow6"]
+z_index = -1
+position = Vector2(-7.66785, 10.1824)
+scale = Vector2(0.0406364, 0.0406364)
+texture = ExtResource("2_sv800")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow6"]
+position = Vector2(-11.9417, 0.323669)
+shape = SubResource("RectangleShape2D_k41e4")
+
+[node name="Area2D" type="Area2D" parent="Arrow6"]
+priority = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow6/Area2D"]
+position = Vector2(61.1054, 0.537658)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xlquk")
+
+[node name="Arrow7" type="RigidBody2D" parent="."]
+position = Vector2(-663.023, 323.898)
+collision_mask = 16
+can_sleep = false
+max_contacts_reported = 3
+contact_monitor = true
+linear_damp = 0.2
+script = ExtResource("2_aupj8")
+startVelocity = Vector2(8, -5)
+force = 10000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow7"]
+z_index = -1
+position = Vector2(-7.66785, 10.1824)
+scale = Vector2(0.0406364, 0.0406364)
+texture = ExtResource("2_sv800")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow7"]
+position = Vector2(-11.9417, 0.323669)
+shape = SubResource("RectangleShape2D_k41e4")
+
+[node name="Area2D" type="Area2D" parent="Arrow7"]
+priority = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow7/Area2D"]
+position = Vector2(61.1054, 0.537658)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xlquk")
+
+[node name="Arrow8" type="RigidBody2D" parent="."]
+position = Vector2(-698.301, 248.303)
+collision_mask = 16
+can_sleep = false
+max_contacts_reported = 3
+contact_monitor = true
+linear_damp = 0.2
+script = ExtResource("2_aupj8")
+startVelocity = Vector2(8, -5)
+force = 10000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow8"]
+z_index = -1
+position = Vector2(-7.66785, 10.1824)
+scale = Vector2(0.0406364, 0.0406364)
+texture = ExtResource("2_sv800")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow8"]
+position = Vector2(-11.9417, 0.323669)
+shape = SubResource("RectangleShape2D_k41e4")
+
+[node name="Area2D" type="Area2D" parent="Arrow8"]
+priority = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow8/Area2D"]
+position = Vector2(61.1054, 0.537658)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xlquk")
 
@@ -329,4 +505,16 @@ color = Color(0.843166, 0, 0.340043, 1)
 
 [connection signal="body_entered" from="Arrow2" to="Arrow2" method="_on_body_entered"]
 [connection signal="body_entered" from="Arrow2/Area2D" to="Arrow2" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Arrow3" to="Arrow3" method="_on_body_entered"]
+[connection signal="body_entered" from="Arrow3/Area2D" to="Arrow3" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Arrow4" to="Arrow4" method="_on_body_entered"]
+[connection signal="body_entered" from="Arrow4/Area2D" to="Arrow4" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Arrow5" to="Arrow5" method="_on_body_entered"]
+[connection signal="body_entered" from="Arrow5/Area2D" to="Arrow5" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Arrow6" to="Arrow6" method="_on_body_entered"]
+[connection signal="body_entered" from="Arrow6/Area2D" to="Arrow6" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Arrow7" to="Arrow7" method="_on_body_entered"]
+[connection signal="body_entered" from="Arrow7/Area2D" to="Arrow7" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Arrow8" to="Arrow8" method="_on_body_entered"]
+[connection signal="body_entered" from="Arrow8/Area2D" to="Arrow8" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
