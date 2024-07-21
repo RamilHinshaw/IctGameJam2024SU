@@ -1,9 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://dcaifoirdvds2"]
+[gd_scene load_steps=26 format=3 uid="uid://dcaifoirdvds2"]
 
 [ext_resource type="Script" path="res://scripts/characterController.gd" id="1_7m5av"]
 [ext_resource type="Texture2D" uid="uid://beof1utg3x4i4" path="res://textures/character/body.png" id="2_madht"]
 [ext_resource type="PackedScene" uid="uid://3jfxo2yc1arf" path="res://prefabs/arrow.tscn" id="2_vn7tt"]
-[ext_resource type="Script" path="res://scripts/TestDetectArea.gd" id="3_77081"]
 [ext_resource type="Texture2D" uid="uid://cdxhdmrdwito7" path="res://textures/character/head.png" id="3_w8bxr"]
 [ext_resource type="Texture2D" uid="uid://cwt7p56l41p3c" path="res://textures/character/arm.png" id="4_gre8a"]
 [ext_resource type="Script" path="res://scripts/ProjectileSpawner.gd" id="4_iigbf"]
@@ -51,9 +50,6 @@ size = Vector2(11.8467, 36.1241)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k00ae"]
 size = Vector2(11.6798, 35.4567)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqih7"]
-size = Vector2(39.7817, 39.438)
-
 [node name="World" type="Node2D"]
 
 [node name="Level" type="Node2D" parent="."]
@@ -100,7 +96,7 @@ position = Vector2(315.045, 103.163)
 shape = SubResource("RectangleShape2D_aps7f")
 
 [node name="Ragdoll" type="Node2D" parent="." groups=["Player"]]
-position = Vector2(977.935, 683.909)
+position = Vector2(977.935, 919.106)
 script = ExtResource("1_7m5av")
 jumpForce = 300000
 
@@ -138,6 +134,7 @@ shape = SubResource("CircleShape2D_ut6eq")
 position = Vector2(-36.9392, -11.6365)
 collision_layer = 2
 can_sleep = false
+continuous_cd = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/ArmInner-Left"]
 position = Vector2(-0.493958, 0.640991)
@@ -154,6 +151,7 @@ texture = ExtResource("6_bha7l")
 position = Vector2(-73.9177, -11.6365)
 collision_layer = 2
 can_sleep = false
+continuous_cd = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/ArmOuter-Left"]
 position = Vector2(-0.604187, 0.692932)
@@ -170,6 +168,7 @@ texture = ExtResource("5_pkx4i")
 position = Vector2(39.8636, -11.6147)
 collision_layer = 2
 can_sleep = false
+continuous_cd = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/ArmInner-Right"]
 position = Vector2(-0.505798, 0.779419)
@@ -186,6 +185,7 @@ texture = ExtResource("4_gre8a")
 position = Vector2(76.8422, -11.6147)
 collision_layer = 2
 can_sleep = false
+continuous_cd = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/ArmOuter-Right"]
 position = Vector2(-0.865601, 0.745178)
@@ -203,6 +203,7 @@ position = Vector2(12.918, 52.8219)
 rotation = 1.5708
 collision_layer = 2
 can_sleep = false
+continuous_cd = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/LegInner-Right"]
 position = Vector2(-0.510437, 0.359253)
@@ -220,6 +221,7 @@ position = Vector2(12.8971, 89.8476)
 rotation = 1.5708
 collision_layer = 2
 can_sleep = false
+continuous_cd = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/LegOuter-Right"]
 position = Vector2(-0.49408, 0.213196)
@@ -237,6 +239,7 @@ position = Vector2(-10.0249, 52.8219)
 rotation = 1.5708
 collision_layer = 2
 can_sleep = false
+continuous_cd = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/LegInner-Left"]
 position = Vector2(-0.593689, 0.442627)
@@ -254,10 +257,11 @@ position = Vector2(-10.0458, 89.8476)
 rotation = 1.5708
 collision_layer = 2
 can_sleep = false
+continuous_cd = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ragdoll/LegOuter-Left"]
 position = Vector2(-0.494019, 0.17157)
-rotation = -1.5708
+rotation = -1.56926
 shape = SubResource("RectangleShape2D_k00ae")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ragdoll/LegOuter-Left"]
@@ -322,23 +326,6 @@ node_b = NodePath("../../LegOuter-Left")
 
 [node name="Arrow" parent="." instance=ExtResource("2_vn7tt")]
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(398.649, 992.089)
-scale = Vector2(3.53854, -3.36586)
-script = ExtResource("3_77081")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(20.0645, 20.2882)
-shape = SubResource("RectangleShape2D_sqih7")
-
-[node name="ColorRect" type="ColorRect" parent="Area2D"]
-offset_left = 1.0
-offset_top = 39.0
-offset_right = 12.0
-offset_bottom = 51.0
-scale = Vector2(3.53854, -3.36586)
-color = Color(0.843166, 0, 0.340043, 1)
-
 [node name="Arrow_Spawner" type="Node2D" parent="."]
 position = Vector2(-473.958, 552.357)
 script = ExtResource("4_iigbf")
@@ -352,4 +339,10 @@ timer = 0.6
 reverse = true
 spawnPosY = Vector2(40, 800)
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[node name="Arrow_Spawner3" type="Node2D" parent="."]
+position = Vector2(1008.76, -901.377)
+script = ExtResource("4_iigbf")
+timer = 0.6
+reverse = true
+isVertical = true
+spawnPosY = Vector2(25, 1800)

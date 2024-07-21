@@ -69,6 +69,7 @@ func hurtBody(bodyPart):
 func _process(delta):
 	if Input.is_key_pressed(KEY_R):
 		get_tree().reload_current_scene()
+		Engine.time_scale = 1.0
 
 func onDeath():
 	$Joints/HeadBody.queue_free()

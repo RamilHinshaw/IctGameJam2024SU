@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventBus="*res://scripts/EventBus.gd"
+Global="*res://prefabs/Global.tscn"
 
 [display]
 
@@ -39,7 +40,10 @@ Right={
 
 [physics]
 
+2d/run_on_separate_thread=true
 2d/physics_engine="Rapier2D"
+2d/solver/solver_iterations=24
+2d/solver/contact_max_allowed_penetration=0.05
 
 [rendering]
 
