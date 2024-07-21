@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://djs1jycchmm4y"]
+[gd_scene load_steps=16 format=3 uid="uid://djs1jycchmm4y"]
 
 [ext_resource type="Texture2D" uid="uid://dsercrgpgvxjb" path="res://textures/ui/info.png" id="1_aglnb"]
 [ext_resource type="Texture2D" uid="uid://o2xj6md1buuu" path="res://textures/ui/start.png" id="2_g4avy"]
 [ext_resource type="Texture2D" uid="uid://h0p5sp6psvnm" path="res://textures/ui/start3.png" id="3_m2nfi"]
 [ext_resource type="Texture2D" uid="uid://dkgkn3copws1b" path="res://textures/ui/start2.png" id="4_2s7nn"]
+[ext_resource type="Script" path="res://scripts/StartButton.gd" id="4_oww57"]
 [ext_resource type="Texture2D" uid="uid://ib2ahr5yd81o" path="res://textures/ui/Options_Button.png" id="5_86b6h"]
 [ext_resource type="Script" path="res://scripts/ChangeSceneButton.gd" id="5_snyot"]
 [ext_resource type="Texture2D" uid="uid://bovj27aps2lgg" path="res://textures/ui/Options_Button3.png" id="6_j47rs"]
@@ -25,8 +26,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-layout_mode = 0
+[node name="Main" type="Node2D" parent="."]
+
+[node name="Start" type="TextureButton" parent="Main"]
+offset_left = 307.656
+offset_top = 482.893
+offset_right = 2227.66
+offset_bottom = 1562.89
+scale = Vector2(0.177124, 0.189638)
+texture_normal = ExtResource("2_g4avy")
+texture_pressed = ExtResource("3_m2nfi")
+texture_hover = ExtResource("4_2s7nn")
+texture_focused = ExtResource("3_m2nfi")
+script = ExtResource("4_oww57")
+scene = ExtResource("6_owu4s")
+
+[node name="Options" type="TextureButton" parent="Main"]
+offset_left = 356.709
+offset_top = 653.468
+offset_right = 2276.71
+offset_bottom = 1733.47
+scale = Vector2(0.132731, 0.155512)
+texture_normal = ExtResource("5_86b6h")
+texture_pressed = ExtResource("6_j47rs")
+texture_hover = ExtResource("7_2iibn")
+texture_focused = ExtResource("6_j47rs")
+
+[node name="ExitButton" type="TextureButton" parent="Main"]
+offset_left = 289.37
+offset_top = 772.944
+offset_right = 2209.37
+offset_bottom = 1852.94
+scale = Vector2(0.194748, 0.194748)
+texture_normal = ExtResource("8_2pluq")
+texture_pressed = ExtResource("9_m23v1")
+texture_hover = ExtResource("10_lpds4")
+texture_focused = ExtResource("9_m23v1")
+script = ExtResource("5_snyot")
+exit_instead = true
+
+[node name="Title" type="Sprite2D" parent="Main"]
+position = Vector2(513.787, 278.829)
+scale = Vector2(0.495001, 0.495001)
+texture = ExtResource("13_s3ugc")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Main"]
 offset_left = 1143.89
 offset_top = 637.639
 offset_right = 1879.89
@@ -42,48 +86,4 @@ position = Vector2(970.781, 525.811)
 scale = Vector2(1.45746, 1.45746)
 texture = ExtResource("1_aglnb")
 
-[node name="Start" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 307.656
-offset_top = 482.893
-offset_right = 2227.66
-offset_bottom = 1562.89
-scale = Vector2(0.177124, 0.189638)
-texture_normal = ExtResource("2_g4avy")
-texture_pressed = ExtResource("3_m2nfi")
-texture_hover = ExtResource("4_2s7nn")
-texture_focused = ExtResource("3_m2nfi")
-script = ExtResource("5_snyot")
-scene = ExtResource("6_owu4s")
-grabThisfocus = true
-
-[node name="Options" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 356.709
-offset_top = 653.468
-offset_right = 2276.71
-offset_bottom = 1733.47
-scale = Vector2(0.132731, 0.155512)
-texture_normal = ExtResource("5_86b6h")
-texture_pressed = ExtResource("6_j47rs")
-texture_hover = ExtResource("7_2iibn")
-texture_focused = ExtResource("6_j47rs")
-
-[node name="ExitButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 289.37
-offset_top = 772.944
-offset_right = 2209.37
-offset_bottom = 1852.94
-scale = Vector2(0.194748, 0.194748)
-texture_normal = ExtResource("8_2pluq")
-texture_pressed = ExtResource("9_m23v1")
-texture_hover = ExtResource("10_lpds4")
-texture_focused = ExtResource("9_m23v1")
-script = ExtResource("5_snyot")
-exit_instead = true
-
-[node name="Title" type="Sprite2D" parent="."]
-position = Vector2(513.787, 278.829)
-scale = Vector2(0.495001, 0.495001)
-texture = ExtResource("13_s3ugc")
+[connection signal="pressed" from="Main/Start" to="Main/Start" method="_on_pressed"]

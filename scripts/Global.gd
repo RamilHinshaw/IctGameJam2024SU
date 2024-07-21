@@ -46,7 +46,7 @@ var gameOver: bool = false
 #var player:KinematicBody2D
 
 func _ready():
-	_control.visible = false
+	#_control.visible = false
 	print(get_tree().get_current_scene().get_name())
 
 	#if (get_tree().current_scene. == "Title"):
@@ -56,8 +56,8 @@ func _process(delta):
 
 	if Input.is_key_pressed(KEY_R):
 		reset_level()
-		get_tree().reload_current_scene()
-		Engine.time_scale = 1.0
+		#get_tree().reload_current_scene()
+		#Engine.time_scale = 1.0
 	#if Input.is_action_just_released("ui_reset"):
 		#reset_level(false)
 		
@@ -65,6 +65,13 @@ func _process(delta):
 		_audio_bgm.stop()
 		get_tree().change_scene_to_file("res://scenes/Title.tscn")
 		#current_level = 0
+		
+	if Input.is_action_just_pressed("Left") || Input.is_action_just_pressed("Right"):
+		if (gameOver):
+			reset_level()
+			#gameOver = false
+			#get_tree().reload_current_scene()
+			#Engine.time_scale = 1.0
 		
 	#if Input.is_action_just_released("ui_next"):
 		#next_level()
@@ -76,12 +83,25 @@ func _process(delta):
 	#pass
 	#
 func game_over():
-	$CanvasLayer/Control/Score.visible = true
-	$CanvasLayer/Control/Score/scoreLbl.text = str(dodgeArrows)
+	
+	Engine.time_scale = 0.5
+	await get_tree().create_timer(2).timeout
+	gameOver = true
+	
+	#Engine.time_scale = 1.0
+	#get_tree().reload_current_scene()
+	
+	$CanvasLayer/Control.visible = true
+	#$CanvasLayer/Control/Score.visible = true
+	$CanvasLayer/Control/Score/scoreLbl.text = "[center]%s[/center]" % str(dodgeArrows)
+	
 	
 func reset_level():
-	$CanvasLayer/Control/Score.visible = false
-	
+	$CanvasLayer/Control.visible = false
+	gameOver = false
+	Engine.time_scale = 1.0
+	get_tree().reload_current_scene()
+	dodgeArrows = 0
 
 func next_level():
 	
@@ -102,15 +122,15 @@ func next_level():
 	
 	change_scenePacked(scene)
 
-func reset_level(has_died):
-	if has_died:
-		_death_subtext = "Death"
-	else:
-		_death_subtext = ""
-	
-	is_world_paused = true
-	var scene = levels[current_level]
-	change_scenePacked(scene)
+#func reset_level(has_died):
+	#if has_died:
+		#_death_subtext = "Death"
+	#else:
+		#_death_subtext = ""
+	#
+	#is_world_paused = true
+	#var scene = levels[current_level]
+	#change_scenePacked(scene)
 	
 	
 func change_scene(scene_path:String, transition:int = 0):

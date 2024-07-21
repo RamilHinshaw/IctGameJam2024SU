@@ -74,11 +74,10 @@ _data = {
 "FadeOutDeath": SubResource("4")
 }
 
-[node name="Global" type="Node2D"]
+[node name="Global" type="Node2D" node_paths=PackedStringArray("audio_sfxArray")]
 position = Vector2(0, 3)
 script = ExtResource("1_wybty")
-current_level = null
-levels = null
+audio_sfxArray = [NodePath("Sfx01"), NodePath("Sfx02"), NodePath("Sfx03"), NodePath("Sfx04"), NodePath("Sfx05"), NodePath("Sfx06")]
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 autoplay = true
@@ -100,6 +99,7 @@ autoplay = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,7 +121,6 @@ grow_vertical = 2
 color = Color(0.0313726, 0.0941176, 0.12549, 0)
 
 [node name="Score" type="ColorRect" parent="CanvasLayer/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,15 +153,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -138.0
+offset_left = -272.0
 offset_top = -8.0
-offset_right = 412.0
+offset_right = 262.0
 offset_bottom = 129.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 80
 theme_override_font_sizes/bold_font_size = 0
-text = "0"
+bbcode_enabled = true
+text = "[center]0[/center]"
 
 [node name="AnimFade" type="AnimationPlayer" parent="."]
 libraries = {

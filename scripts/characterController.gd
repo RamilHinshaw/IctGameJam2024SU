@@ -45,9 +45,13 @@ func _ready():
 func hurtBody(bodyPart):
 	print("HIT: " + bodyPart)
 	
+	if (_isDead):
+		return
+	
 	if (bodyPart == "Head"):
 		headJointHealth -= 1
 		if headJointHealth <= 0 && $Joints/HeadBody:
+			$Joints/HeadBody.queue_free()
 			onDeath()
 			return
 	
@@ -74,22 +78,19 @@ func hurtBody(bodyPart):
 	Global.play_sfx(sfx_playerHit.pick_random())
 
 
-func _process(delta):
-	if Input.is_key_pressed(KEY_R):
-		get_tree().reload_current_scene()
-		Engine.time_scale = 1.0
+#func _process(delta):
+	#if Input.is_key_pressed(KEY_R):
+		#get_tree().reload_current_scene()
+		#Engine.time_scale = 1.0
 
-func onDeath():
-	$Joints/HeadBody.queue_free()
+func onDeath():	
 	print("DEATH!")
-	Global.gameOver = true
 	_isDead = true
-	Engine.time_scale = 0.5
-	await get_tree().create_timer(2).timeout
-	Engine.time_scale = 1.0
-	get_tree().reload_current_scene()
 	Global.play_sfx(sfx_playerDeath.pick_random())
 	Global.play_sfx(sfx_lose.pick_random())
+	#Global.gameOver = true
+	Global.game_over()	
+
 
 func _physics_process(delta):
 	

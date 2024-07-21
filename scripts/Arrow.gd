@@ -48,7 +48,7 @@ func _on_area_2d_body_entered(body):
 		print("MISS")
 		Global.play_sfx(sfx_hitMiss)
 		
-		if (Global.gameOver):
+		if (!Global.gameOver):
 			Global.dodgeArrows += 1
 		
 		
