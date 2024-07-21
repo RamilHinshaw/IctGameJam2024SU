@@ -80,6 +80,7 @@ script = ExtResource("1_wybty")
 audio_sfxArray = [NodePath("Sfx01"), NodePath("Sfx02"), NodePath("Sfx03"), NodePath("Sfx04"), NodePath("Sfx05"), NodePath("Sfx06")]
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
+volume_db = -5.85
 autoplay = true
 
 [node name="BGS" type="AudioStreamPlayer" parent="."]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://d2ld1rxlgw1c7"]
+[gd_scene load_steps=29 format=3 uid="uid://d2ld1rxlgw1c7"]
 
 [ext_resource type="Script" path="res://scripts/characterController.gd" id="1_8jqvs"]
 [ext_resource type="AudioStream" uid="uid://bhmreqa30tlie" path="res://audio/grunt-1-85280.mp3" id="2_r4xb5"]
 [ext_resource type="AudioStream" uid="uid://br788ix3uxajt" path="res://audio/steve-old-hurt-sound_XKZxUk4.mp3" id="3_pxs8s"]
+[ext_resource type="AudioStream" uid="uid://fn77micqqrlw" path="res://audio/1591705355-polly-speech.mp3" id="4_h4hrg"]
 [ext_resource type="AudioStream" uid="uid://r7o6gp5msb3g" path="res://audio/roblox-death-sound_1.mp3" id="4_sehx4"]
 [ext_resource type="AudioStream" uid="uid://blntn6kswgpfv" path="res://audio/fail-sound-effect.mp3" id="5_1bqx7"]
 [ext_resource type="AudioStream" uid="uid://bansryq0vh2qx" path="res://audio/awkward-cricket-sound-effect.mp3" id="6_cgqon"]
@@ -51,7 +52,7 @@ size = Vector2(11.6798, 35.4567)
 [node name="Ragdoll" type="Node2D" groups=["Player"]]
 position = Vector2(977.935, 919.106)
 script = ExtResource("1_8jqvs")
-sfx_playerHit = Array[AudioStream]([ExtResource("2_r4xb5"), ExtResource("3_pxs8s"), null])
+sfx_playerHit = Array[AudioStream]([ExtResource("2_r4xb5"), ExtResource("3_pxs8s"), ExtResource("4_h4hrg")])
 sfx_playerDeath = Array[AudioStream]([ExtResource("4_sehx4")])
 sfx_lose = Array[AudioStream]([ExtResource("5_1bqx7"), ExtResource("6_cgqon"), ExtResource("7_6oc6n")])
 

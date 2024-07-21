@@ -45,6 +45,14 @@ var gameOver: bool = false
 #PLAYER INFO : HARDCODED IN!
 #var player:KinematicBody2D
 
+func clearLater(givenNode: Node2D):
+	
+	return
+	
+	await get_tree().create_timer(15.0).timeout	
+	#if (givenNode):
+	givenNode.queue_free()
+
 func _ready():
 	#_control.visible = false
 	print(get_tree().get_current_scene().get_name())

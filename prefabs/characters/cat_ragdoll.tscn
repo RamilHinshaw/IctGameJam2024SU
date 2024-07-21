@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://cce4vcdjc6yv0"]
+[gd_scene load_steps=28 format=3 uid="uid://cce4vcdjc6yv0"]
 
 [ext_resource type="Script" path="res://scripts/characterController.gd" id="1_mg0vo"]
 [ext_resource type="AudioStream" uid="uid://bhmreqa30tlie" path="res://audio/grunt-1-85280.mp3" id="2_1yf3e"]
 [ext_resource type="AudioStream" uid="uid://br788ix3uxajt" path="res://audio/steve-old-hurt-sound_XKZxUk4.mp3" id="3_8auny"]
 [ext_resource type="AudioStream" uid="uid://r7o6gp5msb3g" path="res://audio/roblox-death-sound_1.mp3" id="4_au3hs"]
+[ext_resource type="AudioStream" uid="uid://brrhrm0yc45lf" path="res://audio/banana-cat.mp3" id="4_quk07"]
 [ext_resource type="AudioStream" uid="uid://blntn6kswgpfv" path="res://audio/fail-sound-effect.mp3" id="5_n4ex0"]
 [ext_resource type="AudioStream" uid="uid://bansryq0vh2qx" path="res://audio/awkward-cricket-sound-effect.mp3" id="6_2ettm"]
 [ext_resource type="AudioStream" uid="uid://buwefikp5fhv6" path="res://audio/downer_noise.mp3" id="7_6v467"]
@@ -50,7 +51,7 @@ size = Vector2(11.6798, 35.4567)
 [node name="CatRagdoll" type="Node2D" groups=["Player"]]
 position = Vector2(1179.76, 919.636)
 script = ExtResource("1_mg0vo")
-sfx_playerHit = Array[AudioStream]([ExtResource("2_1yf3e"), ExtResource("3_8auny"), null])
+sfx_playerHit = Array[AudioStream]([ExtResource("2_1yf3e"), ExtResource("3_8auny"), ExtResource("4_quk07")])
 sfx_playerDeath = Array[AudioStream]([ExtResource("4_au3hs")])
 sfx_lose = Array[AudioStream]([ExtResource("5_n4ex0"), ExtResource("6_2ettm"), ExtResource("7_6v467")])
 

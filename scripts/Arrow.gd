@@ -58,8 +58,10 @@ func _on_area_2d_body_entered(body):
 		
 		if (!Global.gameOver):
 			Global.dodgeArrows += 1
-		
-		
+			
+		var sprite = $Sprite2D
 		if ($Sprite2D):
 			$Sprite2D.reparent(body)
+			Global.clearLater(sprite)
+			
 		queue_free()
