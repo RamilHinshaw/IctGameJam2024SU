@@ -1,26 +1,37 @@
 extends Node
 
 @export var projectile: PackedScene = preload("res://prefabs/arrow.tscn")
-@export var timer = 0.3
+@export var timer = 1
 @export var reverse: bool
 @export var isVertical: bool
 
 @export var spawnPosY:Vector2 = Vector2(20, 1000)
 
+var difficultyModifier: float = 1
+var difficultyStep:float = 0.1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	fireProjectile()
 	
 	if isVertical:
-		await get_tree().create_timer(4.0).timeout
+		await get_tree().create_timer(5.0).timeout
 		aimHead()
+		
+	difficultyChanger()
+		
+func difficultyChanger():
+	await get_tree().create_timer(5.0).timeout
+	difficultyModifier -= difficultyStep
+	print("difficult: " + str(difficultyModifier))
+	difficultyChanger()
 		
 func aimHead():
 	var instance = projectile.instantiate()
 	instance.global_position.x = Global.playerHead.global_position.x
 	add_child(instance)
-	await get_tree().create_timer(6.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	aimHead()	
 	
 	
@@ -44,5 +55,5 @@ func fireProjectile():
 		instance.startVelocity.x *= -1
 	
 	add_child(instance)
-	await get_tree().create_timer(timer).timeout
+	await get_tree().create_timer(timer * difficultyModifier).timeout
 	fireProjectile()

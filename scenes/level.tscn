@@ -67,31 +67,28 @@ linear_damp = 0.3
 [node name="Arrow_Spawner" type="Node2D" parent="."]
 position = Vector2(-473.958, 552.357)
 script = ExtResource("4_iigbf")
-timer = 0.6
 spawnPosY = Vector2(40, 800)
 
 [node name="Arrow_Spawner2" type="Node2D" parent="."]
 position = Vector2(2441.33, 552.357)
 script = ExtResource("4_iigbf")
-timer = 0.6
 reverse = true
 spawnPosY = Vector2(40, 800)
 
 [node name="Arrow_Spawner3" type="Node2D" parent="."]
 position = Vector2(1008.76, -901.377)
 script = ExtResource("4_iigbf")
-timer = 0.6
 reverse = true
 isVertical = true
 spawnPosY = Vector2(25, 1800)
-
-[node name="CharacterSpawner" type="Node2D" parent="." node_paths=PackedStringArray("characterInScene")]
-position = Vector2(977.935, 919.106)
-script = ExtResource("5_ckcr8")
-characterInScene = [NodePath("../CatRagdoll"), NodePath("../Ragdoll")]
 
 [node name="CatRagdoll" parent="." instance=ExtResource("7_eaap8")]
 position = Vector2(977.399, 876.833)
 
 [node name="Ragdoll" parent="." instance=ExtResource("6_08lcu")]
 position = Vector2(978.186, 876.662)
+
+[node name="CharacterSpawner" type="Node2D" parent="." node_paths=PackedStringArray("characterInScene")]
+position = Vector2(978.994, 919.106)
+script = ExtResource("5_ckcr8")
+characterInScene = [NodePath("../CatRagdoll"), NodePath("../Ragdoll")]

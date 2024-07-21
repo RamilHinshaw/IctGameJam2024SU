@@ -185,12 +185,12 @@ func resetVelocity():
 
 func clampVelocity():
 
-	var max = 1700
+	var max = 700
 	var min = -700
 	
 	#pass
-	$Body.linear_velocity.x = clampf($Body.linear_velocity.x, -max, max)
-	$Body.linear_velocity.y = clampf($Body.linear_velocity.y, -max, max)
+	$Body.linear_velocity.x = clampf($Body.linear_velocity.x, -700, 700)
+	$Body.linear_velocity.y = clampf($Body.linear_velocity.y, -700, 700)
 	
 
 	

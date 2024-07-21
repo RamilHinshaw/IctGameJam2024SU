@@ -9,12 +9,13 @@ extends Node
 func _ready():
 	var chosenChar = characterInScene.pick_random()
 	
-	chosenChar.setHead()
 	
 	for character in characterInScene:
 		if character != chosenChar:
 			character.queue_free()
 	#spawnRdmCharacter()
+	chosenChar.setHead()
+	
 
 #func spawnRdmCharacter():
 	#var instance = characters.pick_random().instantiate()
