@@ -98,7 +98,6 @@ shape = SubResource("RectangleShape2D_aps7f")
 [node name="Ragdoll" type="Node2D" parent="." groups=["Player"]]
 position = Vector2(977.935, 919.106)
 script = ExtResource("1_7m5av")
-jumpForce = 300000
 
 [node name="Body" type="RigidBody2D" parent="Ragdoll" groups=["Player"]]
 collision_layer = 4
@@ -325,6 +324,7 @@ node_a = NodePath("../../LegInner-Left")
 node_b = NodePath("../../LegOuter-Left")
 
 [node name="Arrow" parent="." instance=ExtResource("2_vn7tt")]
+linear_damp = 0.3
 
 [node name="Arrow_Spawner" type="Node2D" parent="."]
 position = Vector2(-473.958, 552.357)

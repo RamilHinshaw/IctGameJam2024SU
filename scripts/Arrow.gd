@@ -18,9 +18,10 @@ func _ready():
 func _physics_process(delta):
 
 	var angle = linear_velocity.angle()
+	self.rotation = angle
 
-	if $Sprite2D:
-		$Sprite2D.rotation = angle
+	#if $Sprite2D:
+		#$Sprite2D.rotation = angle
 	
 
 func _on_area_2d_body_entered(body):
@@ -33,7 +34,8 @@ func _on_area_2d_body_entered(body):
 		#print("HIT: " + body.name)
 		#EventBus.emit_signal("player_hit", body.name)
 		EventBus.player_hit.emit(body.name)
-		$Sprite2D.reparent(body)
+		$Sprite2D.reparent(body, true)
+		
 		$Area2D.monitoring = false
 		linear_velocity = Vector2.ZERO
 		_hitPlayer = true

@@ -112,7 +112,7 @@ func _physics_process(delta):
 				var calcUpwardForce = Vector2.UP * bonusForce/3
 				
 				#resetVelocity()
-				$Body.apply_central_force(Vector2.RIGHT * axis * bonusForce*2 + calcUpwardForce)
+				$Body.apply_central_force(Vector2.RIGHT * axis * bonusForce + calcUpwardForce)
 				print("DASH")
 			
 		if ((_lastInputAxis != axis && lastInputDelay <= lastJumpInputTimerMin) ||
@@ -156,16 +156,17 @@ func _physics_process(delta):
 	#print($Head.linear_velocity)
 
 func resetVelocity():
-	$Body.linear_velocity = Vector2.ZERO
-	$Head.linear_velocity = Vector2.ZERO
-	$"ArmInner-Left".linear_velocity = Vector2.ZERO
-	$"ArmOuter-Left".linear_velocity = Vector2.ZERO
-	$"ArmInner-Right".linear_velocity = Vector2.ZERO
-	$"ArmOuter-Right".linear_velocity = Vector2.ZERO
-	$"LegInner-Left".linear_velocity = Vector2.ZERO
-	$"LegOuter-Left".linear_velocity = Vector2.ZERO
-	$"LegInner-Right".linear_velocity = Vector2.ZERO
-	$"LegOuter-Right".linear_velocity = Vector2.ZERO
+	pass
+	#$Body.linear_velocity = Vector2.ZERO
+	#$Head.linear_velocity = Vector2.ZERO
+	#$"ArmInner-Left".linear_velocity = Vector2.ZERO
+	#$"ArmOuter-Left".linear_velocity = Vector2.ZERO
+	#$"ArmInner-Right".linear_velocity = Vector2.ZERO
+	#$"ArmOuter-Right".linear_velocity = Vector2.ZERO
+	#$"LegInner-Left".linear_velocity = Vector2.ZERO
+	#$"LegOuter-Left".linear_velocity = Vector2.ZERO
+	#$"LegInner-Right".linear_velocity = Vector2.ZERO
+	#$"LegOuter-Right".linear_velocity = Vector2.ZERO
 
 func clampVelocity():
 
