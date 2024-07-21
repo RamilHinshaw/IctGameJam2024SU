@@ -9,7 +9,15 @@ var _hitPlayer: bool = false
 @export var sfx_fire:AudioStream
 @export var sfx_hitMiss:AudioStream
 
+@export var textures:Array[Texture]
+
+@onready var sprite:Sprite2D = $Sprite2D
+
 func _ready():
+	#Random Texture
+	sprite.texture = textures.pick_random()
+	
+	
 	apply_central_force(startVelocity * force * 10000)
 	Global.play_sfx(sfx_fire)	
 	

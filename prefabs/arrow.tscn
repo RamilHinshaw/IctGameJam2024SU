@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://3jfxo2yc1arf"]
+[gd_scene load_steps=11 format=3 uid="uid://3jfxo2yc1arf"]
 
 [ext_resource type="Script" path="res://scripts/Arrow.gd" id="1_cial4"]
 [ext_resource type="Texture2D" uid="uid://dhhadc8pd2h1b" path="res://textures/projectile/ARROW.png" id="2_jqqsa"]
 [ext_resource type="AudioStream" uid="uid://bvuhxodpyqjfa" path="res://audio/bow_shoot.mp3" id="2_oogan"]
 [ext_resource type="AudioStream" uid="uid://dc77s1wtxo0my" path="res://audio/arrow-wood-impact-146418.mp3" id="2_x8qnk"]
+[ext_resource type="Texture2D" uid="uid://dji516rvh88dv" path="res://textures/projectile/greenArrow.png" id="5_fvqvp"]
+[ext_resource type="Texture2D" uid="uid://oatfkhacdkd8" path="res://textures/projectile/orangeArrow.png" id="6_a7qhe"]
+[ext_resource type="Texture2D" uid="uid://cm834srp5eds4" path="res://textures/projectile/purpleArrow.png" id="7_y8rc3"]
+[ext_resource type="Texture2D" uid="uid://djcvq0dp6a0qs" path="res://textures/projectile/redArrow.png" id="8_4lwca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k41e4"]
 size = Vector2(120.187, 3.64803)
@@ -26,6 +30,7 @@ startVelocity = Vector2(8, -5)
 force = 1.0
 sfx_fire = ExtResource("2_oogan")
 sfx_hitMiss = ExtResource("2_x8qnk")
+textures = Array[Texture]([ExtResource("2_jqqsa"), ExtResource("5_fvqvp"), ExtResource("6_a7qhe"), ExtResource("7_y8rc3"), ExtResource("8_4lwca")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1

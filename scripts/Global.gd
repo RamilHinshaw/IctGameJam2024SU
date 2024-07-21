@@ -102,6 +102,7 @@ func reset_level():
 	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()
 	dodgeArrows = 0
+	#playerHead = null
 
 func next_level():
 	
