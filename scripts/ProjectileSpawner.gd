@@ -11,7 +11,20 @@ extends Node
 func _ready():
 	await get_tree().create_timer(3.0).timeout
 	fireProjectile()
-
+	
+	if isVertical:
+		await get_tree().create_timer(4.0).timeout
+		aimHead()
+		
+func aimHead():
+	var instance = projectile.instantiate()
+	instance.global_position.x = Global.playerHead.global_position.x
+	add_child(instance)
+	await get_tree().create_timer(6.0).timeout
+	aimHead()
+	
+	
+	
 func fireProjectile():
 	var instance = projectile.instantiate()
 	var rng = RandomNumberGenerator.new()

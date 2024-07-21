@@ -6,10 +6,13 @@ extends RigidBody2D
 var _hitPlayer: bool = false
 
 #AUDIO
+@export var sfx_fire:AudioStream
 @export var sfx_hitMiss:AudioStream
 
 func _ready():
 	apply_central_force(startVelocity * force * 10000)
+	Global.play_sfx(sfx_fire)	
+	
 	await get_tree().create_timer(5).timeout
 	queue_free()
 	

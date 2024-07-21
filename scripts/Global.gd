@@ -25,10 +25,16 @@ enum FADE_TYPE {fadeOut, fadeIn, none}
 @onready var _audio_sfx01:AudioStreamPlayer = $Sfx01
 @onready var _audio_sfx02:AudioStreamPlayer = $Sfx02
 @onready var _audio_sfx03:AudioStreamPlayer = $Sfx03
+
+@export var audio_sfxArray: Array[AudioStreamPlayer]
+
 var _sfx_counter:int = 0 #used to play the next buffer
 # ---------------------------------------------------
 
 @onready var death_animation:AnimationPlayer = $DeathAnimation/AnimationPlayer
+
+
+var playerHead: Node2D
 
 var is_world_paused:bool
 var _death_subtext:String
@@ -40,23 +46,23 @@ func _ready():
 	_control.visible = false
 	print(get_tree().get_current_scene().get_name())
 
-
-#func _process(delta):
-	
-	#if (get_tree().get_current_scene().get_name() == "Title"):
+	#if (get_tree().current_scene. == "Title"):
 		#return
-	#
+func _process(delta):
+	
+
+	
 	#if Input.is_action_just_released("ui_reset"):
 		#reset_level(false)
-		#
-	#if Input.is_action_just_released("ui_esc"):
-		##_audio_bgm.stop()
-		#get_tree().change_scene("res://Scenes/Title.tscn")
+		
+	if Input.is_action_just_released("ui_esc"):
+		_audio_bgm.stop()
+		get_tree().change_scene_to_file("res://scenes/Title.tscn")
 		#current_level = 0
-		#
+		
 	#if Input.is_action_just_released("ui_next"):
 		#next_level()
-		
+		#
 	#if Input.is_action_just_pressed("start"):
 	#get_tree().change_scene("res://Scene/UI/TitleScreen.tscn")		
 
@@ -134,15 +140,17 @@ func fadeout_music(fade_dur: float):
 
 func play_sfx(sfx : AudioStream):
 	
-	var player:AudioStreamPlayer 
+	var player:AudioStreamPlayer
 	
-	match _sfx_counter:
-		0: player = _audio_sfx01
-		1: player = _audio_sfx02
-		2: player = _audio_sfx03
+	player = audio_sfxArray[_sfx_counter]
+	
+	#match _sfx_counter:
+		#0: player = _audio_sfx01
+		#1: player = _audio_sfx02
+		#2: player = _audio_sfx03
 		
 	_sfx_counter += 1
-	if _sfx_counter > 2:
+	if _sfx_counter > audio_sfxArray.size()-1:
 		_sfx_counter = 0
 		
 	player.stream = sfx

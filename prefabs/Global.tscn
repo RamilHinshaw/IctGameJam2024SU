@@ -74,9 +74,10 @@ _data = {
 "FadeOutDeath": SubResource("4")
 }
 
-[node name="Global" type="Node2D"]
+[node name="Global" type="Node2D" node_paths=PackedStringArray("audio_sfxArray")]
 position = Vector2(0, 3)
 script = ExtResource("1_wybty")
+audio_sfxArray = [NodePath("Sfx01"), NodePath("Sfx02"), NodePath("Sfx03"), NodePath("Sfx04"), NodePath("Sfx05"), NodePath("Sfx06")]
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 autoplay = true
@@ -88,6 +89,12 @@ autoplay = true
 [node name="Sfx02" type="AudioStreamPlayer" parent="."]
 
 [node name="Sfx03" type="AudioStreamPlayer" parent="."]
+
+[node name="Sfx04" type="AudioStreamPlayer" parent="."]
+
+[node name="Sfx05" type="AudioStreamPlayer" parent="."]
+
+[node name="Sfx06" type="AudioStreamPlayer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,13 +1,21 @@
-[gd_scene load_steps=26 format=3 uid="uid://dcaifoirdvds2"]
+[gd_scene load_steps=34 format=3 uid="uid://dcaifoirdvds2"]
 
 [ext_resource type="Script" path="res://scripts/characterController.gd" id="1_7m5av"]
+[ext_resource type="Script" path="res://scripts/PlayMusic.gd" id="1_hlxuk"]
 [ext_resource type="Texture2D" uid="uid://beof1utg3x4i4" path="res://textures/character/body.png" id="2_madht"]
+[ext_resource type="AudioStream" uid="uid://bhmreqa30tlie" path="res://audio/grunt-1-85280.mp3" id="2_qlscq"]
 [ext_resource type="PackedScene" uid="uid://3jfxo2yc1arf" path="res://prefabs/arrow.tscn" id="2_vn7tt"]
+[ext_resource type="AudioStream" uid="uid://drd2611b6aitf" path="res://audio/music/Happy-Trancin.mp3" id="2_xeh51"]
+[ext_resource type="AudioStream" uid="uid://br788ix3uxajt" path="res://audio/steve-old-hurt-sound_XKZxUk4.mp3" id="3_h1bk6"]
 [ext_resource type="Texture2D" uid="uid://cdxhdmrdwito7" path="res://textures/character/head.png" id="3_w8bxr"]
+[ext_resource type="AudioStream" uid="uid://r7o6gp5msb3g" path="res://audio/roblox-death-sound_1.mp3" id="4_c58do"]
 [ext_resource type="Texture2D" uid="uid://cwt7p56l41p3c" path="res://textures/character/arm.png" id="4_gre8a"]
 [ext_resource type="Script" path="res://scripts/ProjectileSpawner.gd" id="4_iigbf"]
+[ext_resource type="AudioStream" uid="uid://blntn6kswgpfv" path="res://audio/fail-sound-effect.mp3" id="5_6411c"]
 [ext_resource type="Texture2D" uid="uid://bhgnpy8nb4g1l" path="res://textures/character/hand.png" id="5_pkx4i"]
 [ext_resource type="Texture2D" uid="uid://bh5rc6mancu1e" path="res://textures/character/arm2.png" id="6_bha7l"]
+[ext_resource type="AudioStream" uid="uid://bansryq0vh2qx" path="res://audio/awkward-cricket-sound-effect.mp3" id="6_gyg2y"]
+[ext_resource type="AudioStream" uid="uid://buwefikp5fhv6" path="res://audio/downer_noise.mp3" id="7_lxaqj"]
 [ext_resource type="Texture2D" uid="uid://vbwmhljw6fqx" path="res://textures/character/hand2.png" id="7_twwh7"]
 [ext_resource type="Texture2D" uid="uid://s4w8tpsrry7l" path="res://textures/character/leg2.png" id="8_imwy4"]
 [ext_resource type="Texture2D" uid="uid://4bo44vn28oet" path="res://textures/character/foot.png" id="9_50m0r"]
@@ -54,6 +62,8 @@ size = Vector2(11.6798, 35.4567)
 
 [node name="Level" type="Node2D" parent="."]
 position = Vector2(425.519, 431.513)
+script = ExtResource("1_hlxuk")
+music = ExtResource("2_xeh51")
 
 [node name="Ground" type="StaticBody2D" parent="Level" groups=["Level"]]
 position = Vector2(2, 609)
@@ -98,6 +108,9 @@ shape = SubResource("RectangleShape2D_aps7f")
 [node name="Ragdoll" type="Node2D" parent="." groups=["Player"]]
 position = Vector2(977.935, 919.106)
 script = ExtResource("1_7m5av")
+sfx_playerHit = Array[AudioStream]([ExtResource("2_qlscq"), ExtResource("3_h1bk6"), null])
+sfx_playerDeath = Array[AudioStream]([ExtResource("4_c58do")])
+sfx_lose = Array[AudioStream]([ExtResource("5_6411c"), ExtResource("6_gyg2y"), ExtResource("7_lxaqj")])
 
 [node name="Body" type="RigidBody2D" parent="Ragdoll" groups=["Player"]]
 collision_layer = 4

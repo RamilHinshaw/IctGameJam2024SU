@@ -1,8 +1,6 @@
 extends Node2D
 
 
-
-
 @export var power = 200
 @export var upwardPower = 100
 @export var bonusForce = 150000
@@ -10,6 +8,11 @@ extends Node2D
 
 @export var lastInputTimerMin = 0.2
 @export var lastJumpInputTimerMin = 0.04
+
+#AUDIO
+@export var sfx_playerHit:Array[AudioStream]
+@export var sfx_playerDeath: Array[AudioStream]
+@export var sfx_lose: Array[AudioStream]
 
 var _lastInputTime: float = 0
 var _lastInputAxis: float = 0
@@ -34,6 +37,8 @@ func _ready():
 	var bodyParts = [$Body,$Head,$"ArmInner-Left",$"ArmOuter-Left",$"ArmInner-Right",$"ArmOuter-Right",$"LegInner-Left",$"LegOuter-Left",$"LegInner-Right",$"LegOuter-Right"]
 	EventBus.player_hit.connect(hurtBody.bind()) 
 	
+	Global.playerHead = $Head
+	
 	#await get_tree().create_timer(3).timeout
 	#$Joints/LeftArm.queue_free()
 			
@@ -44,6 +49,7 @@ func hurtBody(bodyPart):
 		headJointHealth -= 1
 		if headJointHealth <= 0 && $Joints/HeadBody:
 			onDeath()
+			return
 	
 	elif (bodyPart == "ArmInner-Left" || "ArmOuter-Left" ):
 		leftArmJointHealth -= 1
@@ -64,6 +70,8 @@ func hurtBody(bodyPart):
 		rightLegJointHealth -= 1
 		if rightLegJointHealth <= 0 && $Joints/RightLegBody:
 			$Joints/RightLegBody.queue_free()
+			
+	Global.play_sfx(sfx_playerHit.pick_random())
 
 
 func _process(delta):
@@ -79,6 +87,8 @@ func onDeath():
 	await get_tree().create_timer(2).timeout
 	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()
+	Global.play_sfx(sfx_playerDeath.pick_random())
+	Global.play_sfx(sfx_lose.pick_random())
 
 func _physics_process(delta):
 	
