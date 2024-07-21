@@ -21,8 +21,7 @@ func aimHead():
 	instance.global_position.x = Global.playerHead.global_position.x
 	add_child(instance)
 	await get_tree().create_timer(6.0).timeout
-	aimHead()
-	
+	aimHead()	
 	
 	
 func fireProjectile():

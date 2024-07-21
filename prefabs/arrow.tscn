@@ -33,6 +33,8 @@ sfx_hitMiss = ExtResource("2_x8qnk")
 textures = Array[Texture]([ExtResource("2_jqqsa"), ExtResource("5_fvqvp"), ExtResource("6_a7qhe"), ExtResource("7_y8rc3"), ExtResource("8_4lwca")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+process_mode = 4
+process_physics_priority = -1
 z_index = -1
 position = Vector2(-7.66785, 10.1824)
 scale = Vector2(0.0406364, 0.0406364)

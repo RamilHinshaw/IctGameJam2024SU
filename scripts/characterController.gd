@@ -37,10 +37,13 @@ func _ready():
 	var bodyParts = [$Body,$Head,$"ArmInner-Left",$"ArmOuter-Left",$"ArmInner-Right",$"ArmOuter-Right",$"LegInner-Left",$"LegOuter-Left",$"LegInner-Right",$"LegOuter-Right"]
 	EventBus.player_hit.connect(hurtBody.bind()) 
 	
-	Global.playerHead = $Head
+	
 	
 	#await get_tree().create_timer(3).timeout
 	#$Joints/LeftArm.queue_free()
+	
+func setHead():
+	Global.playerHead = $Head
 			
 func hurtBody(bodyPart):
 	print("HIT: " + bodyPart)
@@ -182,14 +185,22 @@ func resetVelocity():
 
 func clampVelocity():
 
-	pass
-	#$Body.linear_velocity = $Body.linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
-	#$Head.linear_velocity = $Head.linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
-	#$"ArmInner-Left".linear_velocity = $"ArmInner-Left".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
-	#$"ArmOuter-Left".linear_velocity = $"ArmOuter-Left".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
-	#$"ArmInner-Right".linear_velocity = $"ArmInner-Right".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
-	#$"ArmOuter-Right".linear_velocity = $"ArmOuter-Right".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
-	#$"LegInner-Left".linear_velocity = $"LegInner-Left".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
-	#$"LegOuter-Left".linear_velocity = $"LegOuter-Left".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
-	#$"LegInner-Right".linear_velocity = $"LegInner-Right".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
-	#$"LegOuter-Right".linear_velocity = $"LegOuter-Right".linear_velocity.clamp(Vector2(-1000,-1000),Vector2(1000,1000))
+	var max = 1700
+	var min = -700
+	
+	#pass
+	$Body.linear_velocity.x = clampf($Body.linear_velocity.x, -max, max)
+	$Body.linear_velocity.y = clampf($Body.linear_velocity.y, -max, max)
+	
+
+	
+	#$Body.linear_velocity = $Body.linear_velocity.clamp(Vector2(-max,-max),Vector2(max,max))
+	#$Head.linear_velocity = $Head.linear_velocity.clamp(Vector2(-max,-max),Vector2(max,max))
+	#$"ArmInner-Left".linear_velocity = $"ArmInner-Left".linear_velocity.clamp(Vector2(-max,-max),Vector2(max,max))
+	#$"ArmOuter-Left".linear_velocity = $"ArmOuter-Left".linear_velocity.clamp(Vector2(-max,-max),Vector2(max,max))
+	#$"ArmInner-Right".linear_velocity = $"ArmInner-Right".linear_velocity.clamp(Vector2(-max,-max),Vector2(max,max))
+	#$"ArmOuter-Right".linear_velocity = $"ArmOuter-Right".linear_velocity.clamp(Vector2(-max,-max),Vector2(max,max))
+	#$"LegInner-Left".linear_velocity = $"LegInner-Left".linear_velocity.clamp(Vector2(-max,-max),Vector2(max,max))
+	#$"LegOuter-Left".linear_velocity = $"LegOuter-Left".linear_velocity.clamp(Vector2(-max,-max),Vector2(max,max))
+	#$"LegInner-Right".linear_velocity = $"LegInner-Right".linear_velocity.clamp(Vector2(-max,-max),Vector2(max,max))
+	#$"LegOuter-Right".linear_velocity = $"LegOuter-Right".linear_velocity.clamp(Vector2(-max,-max),Vector2(max,max))

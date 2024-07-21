@@ -1,0 +1,280 @@
+[gd_scene load_steps=28 format=3 uid="uid://d2ld1rxlgw1c7"]
+
+[ext_resource type="Script" path="res://scripts/characterController.gd" id="1_8jqvs"]
+[ext_resource type="AudioStream" uid="uid://bhmreqa30tlie" path="res://audio/grunt-1-85280.mp3" id="2_r4xb5"]
+[ext_resource type="AudioStream" uid="uid://br788ix3uxajt" path="res://audio/steve-old-hurt-sound_XKZxUk4.mp3" id="3_pxs8s"]
+[ext_resource type="AudioStream" uid="uid://r7o6gp5msb3g" path="res://audio/roblox-death-sound_1.mp3" id="4_sehx4"]
+[ext_resource type="AudioStream" uid="uid://blntn6kswgpfv" path="res://audio/fail-sound-effect.mp3" id="5_1bqx7"]
+[ext_resource type="AudioStream" uid="uid://bansryq0vh2qx" path="res://audio/awkward-cricket-sound-effect.mp3" id="6_cgqon"]
+[ext_resource type="AudioStream" uid="uid://buwefikp5fhv6" path="res://audio/downer_noise.mp3" id="7_6oc6n"]
+[ext_resource type="Texture2D" uid="uid://beof1utg3x4i4" path="res://textures/character/body.png" id="8_0yq8f"]
+[ext_resource type="Texture2D" uid="uid://cdxhdmrdwito7" path="res://textures/character/head.png" id="9_uejxa"]
+[ext_resource type="Texture2D" uid="uid://bh5rc6mancu1e" path="res://textures/character/arm2.png" id="10_7cgxo"]
+[ext_resource type="Texture2D" uid="uid://bhgnpy8nb4g1l" path="res://textures/character/hand.png" id="11_jjmsn"]
+[ext_resource type="Texture2D" uid="uid://cwt7p56l41p3c" path="res://textures/character/arm.png" id="12_gbjuk"]
+[ext_resource type="Texture2D" uid="uid://vbwmhljw6fqx" path="res://textures/character/hand2.png" id="13_55k8o"]
+[ext_resource type="Texture2D" uid="uid://s4w8tpsrry7l" path="res://textures/character/leg2.png" id="14_vlmwn"]
+[ext_resource type="Texture2D" uid="uid://4bo44vn28oet" path="res://textures/character/foot.png" id="15_a5ws6"]
+[ext_resource type="Texture2D" uid="uid://cb65pepbcfe0y" path="res://textures/character/leg.png" id="16_omdck"]
+[ext_resource type="Texture2D" uid="uid://y7fpom7yx4n8" path="res://textures/character/foot2.png" id="17_wnfki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t07re"]
+size = Vector2(36.6839, 62.9056)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ut6eq"]
+radius = 21.0421
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj34v"]
+size = Vector2(11.5507, 34.569)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwuip"]
+size = Vector2(11.8118, 35.6715)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_covw7"]
+size = Vector2(11.6799, 34.6224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0jtf"]
+size = Vector2(12.0514, 35.2272)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aj2ut"]
+size = Vector2(11.513, 35.7906)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b52ca"]
+size = Vector2(11.5965, 35.6237)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2stf8"]
+size = Vector2(11.8467, 36.1241)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k00ae"]
+size = Vector2(11.6798, 35.4567)
+
+[node name="Ragdoll" type="Node2D" groups=["Player"]]
+position = Vector2(977.935, 919.106)
+script = ExtResource("1_8jqvs")
+sfx_playerHit = Array[AudioStream]([ExtResource("2_r4xb5"), ExtResource("3_pxs8s"), null])
+sfx_playerDeath = Array[AudioStream]([ExtResource("4_sehx4")])
+sfx_lose = Array[AudioStream]([ExtResource("5_1bqx7"), ExtResource("6_cgqon"), ExtResource("7_6oc6n")])
+
+[node name="Body" type="RigidBody2D" parent="." groups=["Player"]]
+collision_layer = 4
+collision_mask = 3
+can_sleep = false
+continuous_cd = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(1.14667, 1.59625)
+shape = SubResource("RectangleShape2D_t07re")
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+position = Vector2(1.04053, 1.48651)
+scale = Vector2(0.130079, 0.130079)
+texture = ExtResource("8_0yq8f")
+
+[node name="Head" type="RigidBody2D" parent="." groups=["Head", "Player"]]
+position = Vector2(4.71314, -65.1077)
+collision_layer = 2
+can_sleep = false
+continuous_cd = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Head"]
+position = Vector2(-3.04193, 11.5972)
+scale = Vector2(0.113604, 0.113604)
+texture = ExtResource("9_uejxa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+position = Vector2(-3.3251, 10.9509)
+shape = SubResource("CircleShape2D_ut6eq")
+
+[node name="ArmInner-Left" type="RigidBody2D" parent="." groups=["Player"]]
+position = Vector2(-36.9392, -11.6365)
+collision_layer = 2
+can_sleep = false
+continuous_cd = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmInner-Left"]
+position = Vector2(-0.493958, 0.640991)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_fj34v")
+
+[node name="Sprite2D" type="Sprite2D" parent="ArmInner-Left"]
+position = Vector2(-0.644043, 0.525513)
+rotation = 4.71239
+scale = Vector2(0.104818, 0.104818)
+texture = ExtResource("10_7cgxo")
+
+[node name="ArmOuter-Left" type="RigidBody2D" parent="." groups=["Player"]]
+position = Vector2(-73.9177, -11.6365)
+collision_layer = 2
+can_sleep = false
+continuous_cd = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmOuter-Left"]
+position = Vector2(-0.604187, 0.692932)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_jwuip")
+
+[node name="Sprite2D" type="Sprite2D" parent="ArmOuter-Left"]
+position = Vector2(-0.644043, 0.71283)
+rotation = -1.5708
+scale = Vector2(0.140783, 0.140783)
+texture = ExtResource("11_jjmsn")
+
+[node name="ArmInner-Right" type="RigidBody2D" parent="." groups=["Player"]]
+position = Vector2(39.8636, -11.6147)
+collision_layer = 2
+can_sleep = false
+continuous_cd = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmInner-Right"]
+position = Vector2(-0.505798, 0.779419)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_covw7")
+
+[node name="Sprite2D" type="Sprite2D" parent="ArmInner-Right"]
+position = Vector2(-0.511597, 0.71283)
+rotation = -4.71239
+scale = Vector2(0.105722, 0.105722)
+texture = ExtResource("12_gbjuk")
+
+[node name="ArmOuter-Right" type="RigidBody2D" parent="." groups=["Player"]]
+position = Vector2(76.8422, -11.6147)
+collision_layer = 2
+can_sleep = false
+continuous_cd = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmOuter-Right"]
+position = Vector2(-0.865601, 0.745178)
+rotation = -1.56874
+shape = SubResource("RectangleShape2D_c0jtf")
+
+[node name="Sprite2D" type="Sprite2D" parent="ArmOuter-Right"]
+position = Vector2(-0.644043, 0.71283)
+rotation = -4.71239
+scale = Vector2(0.140783, 0.140783)
+texture = ExtResource("13_55k8o")
+
+[node name="LegInner-Right" type="RigidBody2D" parent="." groups=["Player"]]
+position = Vector2(12.918, 52.8219)
+rotation = 1.5708
+collision_layer = 2
+can_sleep = false
+continuous_cd = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LegInner-Right"]
+position = Vector2(-0.510437, 0.359253)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_aj2ut")
+
+[node name="Sprite2D" type="Sprite2D" parent="LegInner-Right"]
+position = Vector2(-0.629943, 0.236269)
+rotation = 1.5708
+scale = Vector2(0.108831, 0.108831)
+texture = ExtResource("14_vlmwn")
+
+[node name="LegOuter-Right" type="RigidBody2D" parent="." groups=["Player"]]
+position = Vector2(12.8971, 89.8476)
+rotation = 1.5708
+collision_layer = 2
+can_sleep = false
+continuous_cd = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LegOuter-Right"]
+position = Vector2(-0.49408, 0.213196)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_b52ca")
+
+[node name="Sprite2D" type="Sprite2D" parent="LegOuter-Right"]
+position = Vector2(-0.629943, 0.236269)
+rotation = 4.71239
+scale = Vector2(0.129538, 0.129538)
+texture = ExtResource("15_a5ws6")
+
+[node name="LegInner-Left" type="RigidBody2D" parent="." groups=["Player"]]
+position = Vector2(-10.0249, 52.8219)
+rotation = 1.5708
+collision_layer = 2
+can_sleep = false
+continuous_cd = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LegInner-Left"]
+position = Vector2(-0.593689, 0.442627)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_2stf8")
+
+[node name="Sprite2D" type="Sprite2D" parent="LegInner-Left"]
+position = Vector2(-0.629943, 0.236269)
+rotation = 1.5708
+scale = Vector2(0.108831, 0.108831)
+texture = ExtResource("16_omdck")
+
+[node name="LegOuter-Left" type="RigidBody2D" parent="." groups=["Player"]]
+position = Vector2(-10.0458, 89.8476)
+rotation = 1.5708
+collision_layer = 2
+can_sleep = false
+continuous_cd = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LegOuter-Left"]
+position = Vector2(-0.494019, 0.17157)
+rotation = -1.56926
+shape = SubResource("RectangleShape2D_k00ae")
+
+[node name="Sprite2D" type="Sprite2D" parent="LegOuter-Left"]
+position = Vector2(-0.629943, 0.236269)
+rotation = 4.71239
+scale = Vector2(0.129538, 0.129538)
+texture = ExtResource("17_wnfki")
+
+[node name="Joints" type="Node2D" parent="."]
+
+[node name="HeadBody" type="PinJoint2D" parent="Joints"]
+position = Vector2(0.863586, -31.9216)
+node_a = NodePath("../../Head")
+node_b = NodePath("../../Body")
+disable_collision = false
+angular_limit_lower = -1.1013
+angular_limit_upper = 0.42586
+
+[node name="LeftArm" type="PinJoint2D" parent="Joints"]
+position = Vector2(-55.8669, -10.9984)
+node_a = NodePath("../../ArmInner-Left")
+node_b = NodePath("../../ArmOuter-Left")
+
+[node name="LeftArmBody" type="PinJoint2D" parent="Joints"]
+position = Vector2(-18.8778, -11.1102)
+node_a = NodePath("../../ArmInner-Left")
+node_b = NodePath("../../Body")
+disable_collision = false
+
+[node name="RightArmBody" type="PinJoint2D" parent="Joints"]
+position = Vector2(20.8558, -11.1102)
+node_a = NodePath("../../ArmInner-Right")
+node_b = NodePath("../../Body")
+disable_collision = false
+
+[node name="RightArm" type="PinJoint2D" parent="Joints"]
+position = Vector2(57.9183, -11.1102)
+node_a = NodePath("../../ArmInner-Right")
+node_b = NodePath("../../ArmOuter-Right")
+
+[node name="RightLegBody" type="PinJoint2D" parent="Joints"]
+position = Vector2(12.4431, 33.8702)
+node_a = NodePath("../../LegInner-Right")
+node_b = NodePath("../../Body")
+disable_collision = false
+
+[node name="RightLeg" type="PinJoint2D" parent="Joints"]
+position = Vector2(12.4431, 70.9533)
+node_a = NodePath("../../LegInner-Right")
+node_b = NodePath("../../LegOuter-Right")
+
+[node name="LeftLegBody" type="PinJoint2D" parent="Joints"]
+position = Vector2(-9.75055, 33.8702)
+node_a = NodePath("../../LegInner-Left")
+node_b = NodePath("../../Body")
+disable_collision = false
+
+[node name="LeftLeg" type="PinJoint2D" parent="Joints"]
+position = Vector2(-10.7806, 70.9533)
+node_a = NodePath("../../LegInner-Left")
+node_b = NodePath("../../LegOuter-Left")
