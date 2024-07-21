@@ -82,6 +82,7 @@ func _process(delta):
 func onDeath():
 	$Joints/HeadBody.queue_free()
 	print("DEATH!")
+	Global.gameOver = true
 	_isDead = true
 	Engine.time_scale = 0.5
 	await get_tree().create_timer(2).timeout

@@ -47,6 +47,11 @@ func _on_area_2d_body_entered(body):
 	elif body.is_in_group("Level"):
 		print("MISS")
 		Global.play_sfx(sfx_hitMiss)
+		
+		if (Global.gameOver):
+			Global.dodgeArrows += 1
+		
+		
 		if ($Sprite2D):
 			$Sprite2D.reparent(body)
 		queue_free()

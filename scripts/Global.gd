@@ -39,6 +39,9 @@ var playerHead: Node2D
 var is_world_paused:bool
 var _death_subtext:String
 
+var dodgeArrows: int = 0
+var gameOver: bool = false
+
 #PLAYER INFO : HARDCODED IN!
 #var player:KinematicBody2D
 
@@ -51,7 +54,10 @@ func _ready():
 func _process(delta):
 	
 
-	
+	if Input.is_key_pressed(KEY_R):
+		reset_level()
+		get_tree().reload_current_scene()
+		Engine.time_scale = 1.0
 	#if Input.is_action_just_released("ui_reset"):
 		#reset_level(false)
 		
@@ -69,6 +75,13 @@ func _process(delta):
 #func camera_shake():
 	#pass
 	#
+func game_over():
+	$CanvasLayer/Control/Score.visible = true
+	$CanvasLayer/Control/Score/scoreLbl.text = str(dodgeArrows)
+	
+func reset_level():
+	$CanvasLayer/Control/Score.visible = false
+	
 
 func next_level():
 	
